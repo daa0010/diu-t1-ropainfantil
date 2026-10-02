@@ -54,6 +54,41 @@ El público objetivo de Kidwear se divide en dos segmentos principales:
 3. **Miedo al cobro accidental o error en el pedido:** Compradores mayores y personas con prisa necesitan certidumbre total de lo que ocurre con su dinero.  
    * *Decisión de diseño:* Pantalla de confirmación con número de pedido, resumen del importe y opción de deshacer (*Snackbar*) ante acciones críticas como eliminar artículos del carrito.
 4. **Sobrecarga cognitiva en la búsqueda:** Las categorías genéricas de adultos ("Pantalones", "Camisas") no sirven; los padres compran según la etapa de crecimiento.  
-   * *Decisión de diseño:* Pantalla de inicio estructurada con accesos prioritarios por tramos de edad (*Bebé 0-24 m*, *Niña*, *Niño*) y *filter chips* combinables en el catálogo.
+   * *Decisión de diseño:* Pantalla de inicio estructurada con accesos prioritarios por tramos de edad (*Bebés*, *Peques*, *Grandes*) y *filter chips* combinables en el catálogo.
 
-   
+   ## 3. Diseño de la interfaz
+
+### 3.1 Mapa de navegación
+
+A continuación se representa la arquitectura de la información y el flujo de navegación principal, que incluye las siete pantallas obligatorias y los componentes modales interactivos:
+
+```mermaid
+graph TD
+    %% Pantallas principales
+    Inicio["01 · Inicio"]
+    Catalogo["02 · Catálogo"]
+    Detalle["03 · Detalle de producto"]
+    Carrito["04 · Carrito"]
+    Checkout["05 · Checkout"]
+    Confirmacion["06 · Confirmación"]
+    Perfil["07 · Favoritos / Perfil"]
+
+    %% Elementos superpuestos / feedback
+    GuiaTallas["Overlay: Guía de tallas (Bottom Sheet)"]
+    Snackbar["Feedback: Deshacer eliminación (Snackbar)"]
+
+    %% Flujo principal de compra
+    Inicio -->|Seleccionar categoría / búsqueda| Catalogo
+    Catalogo -->|Seleccionar prenda| Detalle
+    Detalle -.->|Consultar medidas| GuiaTallas
+    Detalle -->|Añadir talla al cesto| Carrito
+    Carrito -.->|Eliminar producto| Snackbar
+    Carrito -->|Tramitar pedido| Checkout
+    Checkout -->|Pagar / Confirmar datos| Confirmacion
+    Confirmacion -->|Volver a la tienda| Inicio
+
+    %% Barra de navegación inferior (3 destinos fijos)
+    Inicio <-->|Barra de navegación| Catalogo
+    Inicio <-->|Barra de navegación| Perfil
+    Catalogo <-->|Barra de navegación| Perfil
+
