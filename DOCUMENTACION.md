@@ -81,6 +81,7 @@ flowchart TD
     %% Acciones tras la compra
     Confirmacion -.->|Seguir comprando| Inicio
     Confirmacion -.->|Ver mis pedidos| Perfil
+```
 
 ### 3.2 Wireframes
 
