@@ -65,7 +65,7 @@ A continuación se representa la arquitectura de la información y el flujo de n
 ```mermaid
 flowchart TD
     %% Destinos principales de la barra de navegación
-    subgraph Nav[Barra de navegación M3]
+    subgraph Nav[Barra de navegación]
         Inicio[01 - Inicio]
         Catalogo[02 - Catálogo]
         Perfil[07 - Perfil]
