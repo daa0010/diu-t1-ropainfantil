@@ -107,3 +107,38 @@ A continuación se presentan los wireframes de baja fidelidad en escala de grise
 
 #### 07. Perfil
 ![07 - Perfil](capturas/wireframes/07%20-%20Perfil.png)
+
+### 3.3 Guía de estilo Material Design 3
+
+El sistema visual de «Kidswear» implementa los estándares de **Material Design 3 (M3)**. Todos los tokens técnicos (esquemas de color, tipografía y métricas espaciales) se encuentran centralizados en el archivo `diseno/estilos.json`.
+
+#### 1. Sistema cromático y color semilla
+* **Color semilla (*Source Color*):** `#B85D43` (Terracota cálido).
+  * **Justificación:** Se seleccionó un tono terracota cálido para transmitir cercanía, confort y modernidad, propio de las marcas contemporáneas de moda infantil y calzado, evitando colores sobresaturados convencionales y cumpliendo la pauta de prescindir de tonos verdes.
+* **Tokens semánticos de color:**
+  * **Modo Claro (*Light Theme*):** `primary`: `#8F4B38`, `onPrimary`: `#FFFFFF`, `primaryContainer`: `#FFDBD1`, `onPrimaryContainer`: `#723523`, `secondary`: `#77574E`, `onSecondary`: `#FFFFFF`, `tertiary`: `#6C5D2F`, `onTertiary`: `#FFFFFF`, `surface`: `#FFF8F6`, `onSurface`: `#231917`, `error`: `#BA1A1A`, `onError`: `#FFFFFF`.
+  * **Modo Oscuro (*Dark Theme*):** `primary`: `#FFB5A0`, `onPrimary`: `#561F0F`, `primaryContainer`: `#723523`, `onPrimaryContainer`: `#FFDBD1`, `secondary`: `#E7BDB2`, `onSecondary`: `#442A22`, `tertiary`: `#D9C58D`, `onTertiary`: `#3B2F05`, `surface`: `#1A110F`, `onSurface`: `#F1DFDA`, `error`: `#FFB4AB`, `onError`: `#690005`.
+
+#### 2. Auditoría de contraste y accesibilidad (WCAG 2.1 AA)
+De acuerdo con las pautas WCAG 2.1, todo elemento interactivo o de texto debe superar el contraste mínimo de **4.5:1** (nivel AA) y **3.0:1** en componentes gráficos. Se han verificado las 12 parejas `color` / `on-color`:
+
+| Esquema | Pareja de color | Código Color | Código On-Color | Ratio de contraste | Cumplimiento WCAG |
+| :--- | :--- | :---: | :---: | :---: | :---: |
+| **Claro** | `primary` / `onPrimary` | `#8F4B38` | `#FFFFFF` | **6.50:1** | Supera AA (mín. 4.5:1) |
+| **Claro** | `primaryContainer` / `onPrimaryContainer` | `#FFDBD1` | `#723523` | **7.25:1** | Cumple AAA (mín. 7.0:1) |
+| **Claro** | `secondary` / `onSecondary` | `#77574E` | `#FFFFFF` | **6.45:1** | Supera AA (mín. 4.5:1) |
+| **Claro** | `tertiary` / `onTertiary` | `#6C5D2F` | `#FFFFFF` | **6.47:1** | Supera AA (mín. 4.5:1) |
+| **Claro** | `surface` / `onSurface` | `#FFF8F6` | `#231917` | **16.36:1** | Cumple AAA (mín. 7.0:1) |
+| **Claro** | `error` / `onError` | `#BA1A1A` | `#FFFFFF` | **6.46:1** | Supera AA (mín. 4.5:1) |
+| **Oscuro** | `primary` / `onPrimary` | `#FFB5A0` | `#561F0F` | **7.74:1** | Cumple AAA (mín. 7.0:1) |
+| **Oscuro** | `primaryContainer` / `onPrimaryContainer` | `#723523` | `#FFDBD1` | **7.25:1** | Cumple AAA (mín. 7.0:1) |
+| **Oscuro** | `secondary` / `onSecondary` | `#E7BDB2` | `#442A22` | **7.70:1** | Cumple AAA (mín. 7.0:1) |
+| **Oscuro** | `tertiary` / `onTertiary` | `#D9C58D` | `#3B2F05` | **7.73:1** | Cumple AAA (mín. 7.0:1) |
+| **Oscuro** | `surface` / `onSurface` | `#1A110F` | `#F1DFDA` | **14.42:1** | Cumple AAA (mín. 7.0:1) |
+| **Oscuro** | `error` / `onError` | `#FFB4AB` | `#690005` | **7.72:1** | Cumple AAA (mín. 7.0:1) |
+
+#### 3. Rejilla y sistema espacial (*Layout Grid*)
+* **Columnas:** 4 columnas fluidas en disposición móvil con medianil (*gutter*) de 16 dp.
+* **Márgenes de pantalla:** 16 dp en los bordes laterales del dispositivo.
+* **Malla modular:** Múltiplos de 8 dp para espaciados, rellenos (*padding*) y dimensiones estructurales (con paso de 4 dp para ajustes finos).
+* **Áreas táctiles mínimas:** Todos los componentes interactivos respetan el área mínima de **48×48 dp**, garantizando la operabilidad táctil accesible y ergonómica.

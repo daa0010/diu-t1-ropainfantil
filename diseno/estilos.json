@@ -1,0 +1,65 @@
+{
+  "propietario": "daa0010",
+  "tienda": "Kidswear",
+  "colorSemilla": "#B85D43",
+  "esquema": {
+    "claro": {
+      "primary": "#8F4B38",
+      "onPrimary": "#FFFFFF",
+      "primaryContainer": "#FFDBD1",
+      "onPrimaryContainer": "#723523",
+      "secondary": "#77574E",
+      "onSecondary": "#FFFFFF",
+      "tertiary": "#6C5D2F",
+      "onTertiary": "#FFFFFF",
+      "surface": "#FFF8F6",
+      "onSurface": "#231917",
+      "error": "#BA1A1A",
+      "onError": "#FFFFFF"
+    },
+    "oscuro": {
+      "primary": "#FFB5A0",
+      "onPrimary": "#561F0F",
+      "primaryContainer": "#723523",
+      "onPrimaryContainer": "#FFDBD1",
+      "secondary": "#E7BDB2",
+      "onSecondary": "#442A22",
+      "tertiary": "#D9C58D",
+      "onTertiary": "#3B2F05",
+      "surface": "#1A110F",
+      "onSurface": "#F1DFDA",
+      "error": "#FFB4AB",
+      "onError": "#690005"
+    }
+  },
+  "tipografia": {
+    "familia": "Roboto",
+    "roles": {
+      "headlineSmall": { "tamano": 24, "interlineado": 32, "peso": 400 },
+      "titleLarge":    { "tamano": 22, "interlineado": 28, "peso": 400 },
+      "titleMedium":   { "tamano": 16, "interlineado": 24, "peso": 500 },
+      "bodyLarge":     { "tamano": 16, "interlineado": 24, "peso": 400 },
+      "labelLarge":    { "tamano": 14, "interlineado": 20, "peso": 500 }
+    }
+  },
+  "espaciado": {
+    "base": 8,
+    "margenPantalla": 16,
+    "columnas": 4,
+    "areaTactilMinima": 48
+  },
+  "componentes": [
+    "Top app bar",
+    "Navigation bar",
+    "Card",
+    "Filter chip",
+    "Button",
+    "Text field",
+    "Snackbar",
+    "Bottom sheet"
+  ],
+  "componentesPropios": [
+    { "nombre": "TarjetaProducto", "variantes": ["normal", "favorito", "agotado"] },
+    { "nombre": "SelectorTalla",   "variantes": ["disponible", "seleccionada", "sin stock"] }
+  ]
+}
