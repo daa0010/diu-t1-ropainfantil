@@ -64,31 +64,21 @@ A continuación se representa la arquitectura de la información y el flujo de n
 
 ```mermaid
 graph TD
-    %% Pantallas principales
-    Inicio["01 · Inicio"]
-    Catalogo["02 · Catálogo"]
-    Detalle["03 · Detalle de producto"]
-    Carrito["04 · Carrito"]
-    Checkout["05 · Checkout"]
-    Confirmacion["06 · Confirmación"]
-    Perfil["07 · Favoritos / Perfil"]
+    %% Destinos de la Navigation Bar
+    Inicio[01 - Inicio]
+    Catalogo[02 - Catálogo]
+    Perfil[07 - Perfil]
 
-    %% Elementos superpuestos / feedback
-    GuiaTallas["Overlay: Guía de tallas (Bottom Sheet)"]
-    Snackbar["Feedback: Deshacer eliminación (Snackbar)"]
+    %% Flujo de navegación principal
+    Inicio <-->|Navigation Bar| Catalogo
+    Catalogo <-->|Navigation Bar| Perfil
+    Inicio <-->|Navigation Bar| Perfil
 
-    %% Flujo principal de compra
-    Inicio -->|Seleccionar categoría / búsqueda| Catalogo
-    Catalogo -->|Seleccionar prenda| Detalle
-    Detalle -.->|Consultar medidas| GuiaTallas
-    Detalle -->|Añadir talla al cesto| Carrito
-    Carrito -.->|Eliminar producto| Snackbar
-    Carrito -->|Tramitar pedido| Checkout
-    Checkout -->|Pagar / Confirmar datos| Confirmacion
-    Confirmacion -->|Volver a la tienda| Inicio
-
-    %% Barra de navegación inferior (3 destinos fijos)
-    Inicio <-->|Barra de navegación| Catalogo
-    Inicio <-->|Barra de navegación| Perfil
-    Catalogo <-->|Barra de navegación| Perfil
-
+    %% Flujo del embudo de compra
+    Inicio -->|Seleccionar categoría / banner| Catalogo
+    Catalogo -->|Seleccionar producto| Detalle[03 - Detalle de producto]
+    Detalle -->|Añadir al carrito| Carrito[04 - Carrito]
+    Carrito -->|Tramitar pedido| Checkout[05 - Checkout]
+    Checkout -->|Pagar| Confirmacion[06 - Confirmación]
+    Confirmacion -->|Seguir comprando| Inicio
+    Confirmacion -->|Ver mis pedidos| Perfil
