@@ -81,3 +81,28 @@ flowchart TD
     %% Acciones tras la compra
     Confirmacion -.->|Seguir comprando| Inicio
     Confirmacion -.->|Ver mis pedidos| Perfil
+
+### 3.2 Wireframes
+
+A continuación se presentan los wireframes de baja fidelidad en escala de grises diseñados para una resolución base de 360×800 dp (Android Compact):
+
+#### 01. Inicio
+![01 - Inicio](capturas/wireframes/01%20-%20Inicio.png)
+
+#### 02. Catálogo
+![02 - Catálogo](capturas/wireframes/02%20-%20Catalogo.png)
+
+#### 03. Detalle del producto
+![03 - Detalle del producto](capturas/wireframes/03%20-%20Detalle.png)
+
+#### 04. Carrito
+![04 - Carrito](capturas/wireframes/04%20-%20Carrito.png)
+
+#### 05. Checkout
+![05 - Checkout](capturas/wireframes/05%20-%20Checkout.png)
+
+#### 06. Confirmación
+![06 - Confirmación](capturas/wireframes/06%20-%20Confirmacion.png)
+
+#### 07. Perfil
+![07 - Perfil](capturas/wireframes/07%20-%20Perfil.png)
