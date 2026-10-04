@@ -63,22 +63,21 @@ El público objetivo de Kidwear se divide en dos segmentos principales:
 A continuación se representa la arquitectura de la información y el flujo de navegación principal, que incluye las siete pantallas obligatorias y los componentes modales interactivos:
 
 ```mermaid
-graph TD
-    %% Destinos de la Navigation Bar
-    Inicio[01 - Inicio]
-    Catalogo[02 - Catálogo]
-    Perfil[07 - Perfil]
+flowchart TD
+    %% Destinos principales de la barra de navegación
+    subgraph Nav[Barra de navegación M3]
+        Inicio[01 - Inicio]
+        Catalogo[02 - Catálogo]
+        Perfil[07 - Perfil]
+    end
 
-    %% Flujo de navegación principal
-    Inicio <-->|Navigation Bar| Catalogo
-    Catalogo <-->|Navigation Bar| Perfil
-    Inicio <-->|Navigation Bar| Perfil
-
-    %% Flujo del embudo de compra
-    Inicio -->|Seleccionar categoría / banner| Catalogo
+    %% Flujo principal de compra
+    Inicio -->|Explorar catálogo| Catalogo
     Catalogo -->|Seleccionar producto| Detalle[03 - Detalle de producto]
     Detalle -->|Añadir al carrito| Carrito[04 - Carrito]
     Carrito -->|Tramitar pedido| Checkout[05 - Checkout]
     Checkout -->|Pagar| Confirmacion[06 - Confirmación]
-    Confirmacion -->|Seguir comprando| Inicio
-    Confirmacion -->|Ver mis pedidos| Perfil
+
+    %% Acciones tras la compra
+    Confirmacion -.->|Seguir comprando| Inicio
+    Confirmacion -.->|Ver mis pedidos| Perfil
