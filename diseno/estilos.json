@@ -33,7 +33,7 @@
     }
   },
   "tipografia": {
-    "familia": "Roboto",
+    "familia": "Inter",
     "roles": {
       "headlineSmall": { "tamano": 24, "interlineado": 32, "peso": 400 },
       "titleLarge":    { "tamano": 22, "interlineado": 28, "peso": 400 },
