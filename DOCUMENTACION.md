@@ -56,7 +56,7 @@ El público objetivo de Kidwear se divide en dos segmentos principales:
 4. **Sobrecarga cognitiva en la búsqueda:** Las categorías genéricas de adultos ("Pantalones", "Camisas") no sirven; los padres compran según la etapa de crecimiento.  
    * *Decisión de diseño:* Pantalla de inicio estructurada con accesos prioritarios por tramos de edad (*Bebés*, *Peques*, *Grandes*) y *filter chips* combinables en el catálogo.
 
-   ## 3. Diseño de la interfaz
+## 3. Diseño de la interfaz
 
 ### 3.1 Mapa de navegación
 
@@ -110,7 +110,7 @@ A continuación se presentan los wireframes de baja fidelidad en escala de grise
 
 ### 3.3 Guía de estilo Material Design 3
 
-El sistema visual de «Kidswear» implementa los estándares de **Material Design 3 (M3)**. Todos los tokens técnicos (esquemas de color, tipografía y métricas espaciales) se encuentran centralizados en el archivo `diseno/estilos.json`.
+El sistema visual de «Kidwear» implementa los estándares de **Material Design 3 (M3)**. Todos los tokens técnicos (esquemas de color, tipografía y métricas espaciales) se encuentran centralizados en el archivo `diseno/estilos.json`.
 
 #### 1. Sistema cromático y color semilla
 * **Color semilla (*Source Color*):** `#B85D43` (Terracota cálido).
@@ -201,16 +201,16 @@ Para evaluar la usabilidad y la coherencia del flujo de navegación en el protot
 ### 4.2 Resultados
 Se realizaron las pruebas con dos participantes (Alberto y Laura), obteniendo los siguientes resultados:
 
-| Tarea | Métrica | Participante 1 | Participante 2 | Media / Global |
+| Tarea | Métrica | Alberto | Laura | Media / Global |
 | :--- | :--- | :---: | :---: | :---: |
 | **T1: Búsqueda y selección talla 6M** | Éxito<br>Tiempo<br>Errores | **100%**<br>14 s<br>0 | **100%**<br>18 s<br>0 | **100% éxito**<br>16,0 s<br>0 errores |
 | **T2: Consulta Guía de tallas (Overlay)** | Éxito<br>Tiempo<br>Errores | **100%**<br>9 s<br>0 | **100%**<br>12 s<br>1 | **100% éxito**<br>10,5 s<br>0,5 errores |
 | **T3: Carrito y confirmación de compra** | Éxito<br>Tiempo<br>Errores | **100%**<br>21 s<br>0 | **100%**<br>19 s<br>0 | **100% éxito**<br>20,0 s<br>0 errores |
 
-* **Observaciones clave:**
-  * La navegación principal de compra (T3) resultó fluida y directa desde el detalle hasta la pantalla de confirmación, sin desvíos ni dudas en el botón de pago.
-  * En T2, un participante intentó cerrar la guía de tallas haciendo clic en el área oscurecida exterior en vez del botón de cierre.
-  * **Validación de la pantalla de error (`05b`):** Al documentarse como estado estático independiente para evitar solapamientos de interacción en el prototipo interactivo, se evaluó mediante inspección visual. Ambos participantes identificaron de inmediato la denegación del pago gracias al token semántico de error (`#BA1A1A`) y al mensaje contextual.
+#### Tres hallazgos más importantes:
+1. **Flujo de compra fluido y jerarquía clara:** El botón principal de llamada a la acción (*Primary CTA*) guio a los usuarios de manera natural y sin dudas desde la ficha de producto hasta la confirmación.
+2. **Fricción en el cierre de modales:** En la Tarea 2, un participante intentó cerrar la «Guía de tallas» haciendo clic fuera del marco (*scrim*) antes de pulsar el botón de cierre, evidenciando la necesidad de habilitar el cierre al hacer clic en el fondo y un botón más accesible con el pulgar.
+3. **Eficacia del token semántico de error:** En la inspección de la pantalla de error de pago (`05b`), ambos evaluadores comprendieron al instante la denegación de la operación gracias al color de advertencia (`#BA1A1A`) y al mensaje contextual.
 
 ---
 
