@@ -143,8 +143,78 @@ De acuerdo con las pautas WCAG 2.1, todo elemento interactivo o de texto debe su
 * **Malla modular:** Múltiplos de 8 dp para espaciados, rellenos (*padding*) y dimensiones estructurales (con paso de 4 dp para ajustes finos).
 * **Áreas táctiles mínimas:** Todos los componentes interactivos respetan el área mínima de **48×48 dp**, garantizando la operabilidad táctil accesible y ergonómica.
 
+### 3.4 Prototipo de alta fidelidad
 
+En esta fase se ha desarrollado el prototipo interactivo de alta fidelidad para la aplicación móvil de comercio electrónico de moda infantil, materializando los wireframes iniciales en una interfaz visual definitiva y funcional mediante **Figma**.
 
+#### 1. Especificaciones técnicas y estándares de diseño
+* **Resolución base:** 360 × 800 px (estándar de referencia para dispositivos móviles compactos y directrices de Material Design 3).
+* **Sistema de diseño:** Implementación integral de los principios de **Material Design 3 (M3)** utilizando roles y tokens semánticos generados mediante *Material Theme Builder*.
+* **Jerarquía tipográfica y espacial:** Retícula de 4/8 dp, esquinas redondeadas en tarjetas y componentes interactivos según la escala de redondeo M3 (*Large* y *Medium* shape tokens), e iconografía basada en *Material Symbols*.
+* **Roles de color aplicados:**
+  * `Primary` y `On Primary`: Acentos y botones principales de llamada a la acción (CTA).
+  * `Surface`, `Surface Container` y `Surface Container High`: Capas de profundidad para fondos y tarjetas de producto.
+  * `On Surface` y `On Surface Variant`: Contraste tipográfico accesible para títulos y textos secundarios.
+  * `Error` (`#BA1A1A`) y `On Error`: Notificaciones y validaciones en estados críticos de la interfaz.
+
+---
+
+#### 2. Flujo de navegación e interacciones implementadas
+El prototipo cubre el ciclo de compra de extremo a extremo (*end-to-end*), contemplando tanto el camino habitual (*happy path*) como escenarios alternativos y de control de errores:
+
+1. **Pantalla de Inicio (`01`):** Búsqueda directa, navegación rápida por categorías de edad (*Bebés, Peques, Grandes*) y carrusel de novedades con acceso a detalle de producto.
+2. **Catálogo (`02`):** Vista de rejilla de productos con filtros y navegación estructurada.
+3. **Detalle de producto (`03`):** 
+   * Selector interactivo de tallas con cambio dinámico de estado (ej. cambio a talla *6M*).
+   * Estado inactivo y estado deshabilitado (*disabled*) para tallas agotadas (*24M*), aplicando atenuación al 38% de opacidad según directrices de accesibilidad.
+   * Apertura de la **Guía de tallas** mediante ventana modal superpuesta (*overlay*).
+4. **Carrito de compra (`04`):** Resumen de artículos seleccionados, desglose de importes y botón de tramitación.
+5. **Checkout y gestión de errores (`05` y `05b`):** 
+   * Selección de métodos de pago (Tarjeta de crédito / Bizum).
+   * Documentación del **estado de error (`05b`)**: tratamiento de denegación de pago con token semántico de error, borde de advertencia y mensaje de recuperación contextual.
+6. **Confirmación de pedido (`06`):** Notificación de compra satisfactoria con número de pedido y botón de retorno al inicio.
+7. **Perfil de usuario (`07`):** Gestión de cuenta, direcciones y pedidos.
+
+---
+
+#### 3. Soporte para Modo Oscuro (Dark Theme)
+Se han diseñado las variantes en modo oscuro para las pantallas centrales de navegación (**Inicio** y **Detalle**), asegurando:
+* Reducción de fatiga visual mediante superficies oscuras neutras/cálidas (`Surface Dark`), evitando el uso de negros puros absolutos.
+* Recalibración del token `Primary` a un tono de mayor luminancia (Tono 80 / `#FFB5A0`) para mantener el ratio de contraste reglamentario (WCAG AA/AAA) sobre fondos oscuros.
+* Adaptación de los chips interactivos (tallas inactivas con contornos en `Outline Variant` y chip agotado atenuado).
+
+## 4. Validación y pruebas
+
+### 4.1 Metodología
+Para evaluar la usabilidad y la coherencia del flujo de navegación en el prototipo interactivo (360 × 800 px), se definieron tres tareas representativas sin asistencia guiada, evaluando tres métricas clave:
+* **Tasa de éxito:** Finalización autónoma de la tarea sin asistencia.
+* **Tiempo:** Segundos requeridos para completar cada acción.
+* **Errores:** Clics fallidos, interacciones erróneas o desorientación en el flujo.
+
+#### Tareas evaluadas:
+1. **Tarea 1 (Navegación y selección):** Localizar el «Conjunto Bebé» desde la pantalla de inicio, entrar al detalle y seleccionar la talla **6M**.
+2. **Tarea 2 (Consulta de modal/overlay):** Abrir el enlace de la **«Guía de tallas»**, consultar las medidas en la ventana superpuesta y cerrarla para volver a la prenda.
+3. **Tarea 3 (Flujo completo de compra):** Añadir el producto al carrito, acceder a la cesta para revisar el importe y completar la tramitación del pedido (*checkout*) hasta llegar a la pantalla de confirmación.
+
+---
+
+### 4.2 Resultados
+Se realizaron las pruebas con dos participantes (Alberto y Laura), obteniendo los siguientes resultados:
+
+| Tarea | Métrica | Participante 1 | Participante 2 | Media / Global |
+| :--- | :--- | :---: | :---: | :---: |
+| **T1: Búsqueda y selección talla 6M** | Éxito<br>Tiempo<br>Errores | **100%**<br>14 s<br>0 | **100%**<br>18 s<br>0 | **100% éxito**<br>16,0 s<br>0 errores |
+| **T2: Consulta Guía de tallas (Overlay)** | Éxito<br>Tiempo<br>Errores | **100%**<br>9 s<br>0 | **100%**<br>12 s<br>1 | **100% éxito**<br>10,5 s<br>0,5 errores |
+| **T3: Carrito y confirmación de compra** | Éxito<br>Tiempo<br>Errores | **100%**<br>21 s<br>0 | **100%**<br>19 s<br>0 | **100% éxito**<br>20,0 s<br>0 errores |
+
+* **Observaciones clave:**
+  * La navegación principal de compra (T3) resultó fluida y directa desde el detalle hasta la pantalla de confirmación, sin desvíos ni dudas en el botón de pago.
+  * En T2, un participante intentó cerrar la guía de tallas haciendo clic en el área oscurecida exterior en vez del botón de cierre.
+  * **Validación de la pantalla de error (`05b`):** Al documentarse como estado estático independiente para evitar solapamientos de interacción en el prototipo interactivo, se evaluó mediante inspección visual. Ambos participantes identificaron de inmediato la denegación del pago gracias al token semántico de error (`#BA1A1A`) y al mensaje contextual.
+
+---
+
+### 4.3 Iteraciones y mejoras
 
 
 
