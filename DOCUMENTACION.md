@@ -142,3 +142,10 @@ De acuerdo con las pautas WCAG 2.1, todo elemento interactivo o de texto debe su
 * **Márgenes de pantalla:** 16 dp en los bordes laterales del dispositivo.
 * **Malla modular:** Múltiplos de 8 dp para espaciados, rellenos (*padding*) y dimensiones estructurales (con paso de 4 dp para ajustes finos).
 * **Áreas táctiles mínimas:** Todos los componentes interactivos respetan el área mínima de **48×48 dp**, garantizando la operabilidad táctil accesible y ergonómica.
+
+
+
+
+
+
+Palabra del día: 29
