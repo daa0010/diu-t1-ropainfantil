@@ -234,6 +234,53 @@ A partir de los resultados obtenidos en las pruebas con usuarios (específicamen
 | ![Antes](capturas/iteracion/antes.png) | ![Después](capturas/iteracion/despues.png) |
 | *Modal inicial con un único punto de cierre superior.* | *Modal optimizado con botón inferior táctil y cierre al tocar fuera.* |
 
+## 5. Entrega y documentación final
+
+### 5.1 Justificación del diseño propuesto
+
+La solución de diseño desarrollada para la aplicación de moda infantil responde a criterios de usabilidad, ergonomía móvil y coherencia visual basados en el marco de trabajo de **Material Design 3 (M3)**:
+
+* **Enfoque centrado en el usuario y contexto de uso:**  
+  El público objetivo (madres, padres y cuidadores) requiere realizar compras de forma rápida, habitualmente usando el móvil con una sola mano. Por ello, la disposición de elementos respeta la «zona del pulgar» (*thumb zone*), ubicando los botones de acción primarios (*Primary CTA*), la navegación por pestañas y los controles de selección de tallas en las zonas medias e inferiores de la pantalla (360 × 800 px).
+
+* **Sistema de diseño y tokens semánticos (M3):**  
+  El uso de roles semánticos en lugar de valores hexadecimales aislados garantiza consistencia en todos los flujos. La paleta generada mediante *Material Theme Builder* equilibra tonos cálidos propios del sector infantil con contrastes accesibles:
+  * El color `Primary` dirige la atención hacia las acciones de conversión (añadir a la cesta, tramitar pedido).
+  * Los contenedores `Surface` y `Surface Container` estructuran la información en capas jerárquicas claras sin sobrecargar visualmente la pantalla.
+  * Los estados de error (`Error` / `#BA1A1A`) y deshabilitado (tallas agotadas con 38% de opacidad) reducen la carga cognitiva y evitan frustración en la selección de producto.
+
+* **Soporte Dark Theme y accesibilidad:**  
+  La adaptación a modo oscuro no invierte colores arbitrariamente; redistribuye la luminancia para mantener el cumplimiento de contraste según los criterios de éxito WCAG 2.1 (nivel AA), reduciendo la fatiga visual en entornos de baja iluminación.
+
+---
+
+### 5.2 Recomendaciones y pasos a seguir
+
+Tras el ciclo de diseño, prototipado interactivo e iteración de usabilidad, se proponen las siguientes fases para la evolución técnica del producto:
+
+1. **Transferencia a desarrollo (*Design Handoff*):**  
+   * Exportar los tokens de diseño (colores, tipografía y radios) a formatos estructurados (como JSON de *Style Dictionary*) para su consumo directo en desarrollo móvil nativo (Jetpack Compose o Flutter).
+   * Definir las especificaciones de espaciado y retícula basadas en múltiplos de 4/8 dp para facilitar el maquetado.
+
+2. **Microinteracciones y feedback del sistema:**  
+   * Incorporar componentes *Snackbar* o alertas flotantes con retroalimentación inmediata tras añadir artículos a la cesta antes de dirigir al usuario al carrito.
+   * Implementar estados de carga esqueleto (*Skeleton loaders*) en las vistas de catálogo e inicio para mejorar el rendimiento percibido durante peticiones de red.
+
+3. **Pruebas de accesibilidad avanzadas:**  
+   * Ejecutar auditorías de accesibilidad con lectores de pantalla móviles (TalkBack en Android y VoiceOver en iOS) para validar el etiquetado semántico de los botones de tallas y diálogos modales.
+
+4. **Analítica y pruebas de conversión en producción:**  
+   * Medir métricas de abandono en el embudo de *checkout* y evaluar mediante tests A/B el rendimiento de distintos métodos de pago simplificados (como pasarelas nativas tipo Google Pay o Apple Pay).
+
+## 6. Referencias bibliográficas
+
+Google. (2021). *Material Design 3: The next evolution of Material Design*. Material Design. https://m3.material.io/
+
+Hoober, S. (2013, 18 de febrero). *How do users really hold mobile devices?* UXmatters. https://www.uxmatters.com/mt/archives/2013/02/how-do-users-really-hold-mobile-devices.php
+
+Nielsen, J., & Budiu, R. (2013). *Mobile usability*. New Riders. https://www.nngroup.com/books/mobile-usability/
+
+World Wide Web Consortium. (2018). *Web Content Accessibility Guidelines (WCAG) 2.1* (W3C Recommendation). W3C. https://www.w3.org/TR/WCAG21/
 
 
 Palabra del día: 29
