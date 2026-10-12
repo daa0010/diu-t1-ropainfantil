@@ -216,6 +216,24 @@ Se realizaron las pruebas con dos participantes (Alberto y Laura), obteniendo lo
 
 ### 4.3 Iteraciones y mejoras
 
+A partir de los resultados obtenidos en las pruebas con usuarios (específicamente la fricción detectada en la Tarea 2 relativa al cierre del diálogo superpuesto), se aplicó una iteración de diseño sobre el modal de la **Guía de tallas**:
+
+#### 1. Diagnóstico del problema
+* **Fricción detectada:** El modal original disponía únicamente de un icono de aspa («X») en la esquina superior derecha. En una pantalla móvil de 360 × 800 px, esa zona queda fuera de la zona ergonómica del pulgar para el uso con una sola mano. Además, el fondo oscurecido (*scrim*) no permitía el cierre táctil directo.
+
+#### 2. Solución implementada (Material Design 3)
+* **Botón de acción accesible:** Se incorporó un botón centrado en la parte inferior con la etiqueta **«Cerrar»** (*Filled Tonal Button*, altura táctil de 40 dp, bordes redondeados y estilos de color `Primary Container` / `On Primary Container`), situando la acción de salida en la zona cómoda de interacción.
+* **Cierre por toque exterior:** Se configuró en el prototipo interactivo de Figma la opción *«Close when clicking outside»*, permitiendo descartar el modal al tocar cualquier punto fuera de la tarjeta.
+
+---
+
+#### 3. Comparativa Antes y Después
+
+| Antes | Después |
+| :---: | :---: |
+| ![Antes](capturas/iteracion/antes.png) | ![Después](capturas/iteracion/despues.png) |
+| *Modal inicial con un único punto de cierre superior.* | *Modal optimizado con botón inferior táctil y cierre al tocar fuera.* |
+
 
 
 Palabra del día: 29
