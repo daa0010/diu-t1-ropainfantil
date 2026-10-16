@@ -71,10 +71,15 @@ flowchart TD
         Perfil[07 - Perfil]
     end
 
-    %% Flujo principal de compra
+    %% Flujo principal de compra con pasarela de autenticación
     Inicio -->|Explorar catálogo| Catalogo
     Catalogo -->|Seleccionar producto| Detalle[03 - Detalle de producto]
-    Detalle -->|Añadir al carrito| Carrito[04 - Carrito]
+    
+    %% Pasarela de acceso entre Detalle y Carrito
+    Detalle -->|Añadir al carrito / Pasarela auth| InicioSesion[00 - InicioSesion]
+    InicioSesion -->|Iniciar sesión / Google| Carrito[04 - Carrito]
+    InicioSesion -.->|¿No tienes cuenta?| Registro[Registro / Nueva cuenta]
+    
     Carrito -->|Tramitar pedido| Checkout[05 - Checkout]
     Checkout -->|Pagar| Confirmacion[06 - Confirmación]
 
@@ -86,6 +91,9 @@ flowchart TD
 ### 3.2 Wireframes
 
 A continuación se presentan los wireframes de baja fidelidad en escala de grises diseñados para una resolución base de 360×800 dp (Android Compact):
+
+#### 00. Inicio de sesión
+![00 - InicioSesion](capturas/wireframes/00%20-%20InicioSesion.png)
 
 #### 01. Inicio
 ![01 - Inicio](capturas/wireframes/01%20-%20Inicio.png)
@@ -168,12 +176,17 @@ El prototipo cubre el ciclo de compra de extremo a extremo (*end-to-end*), conte
    * Selector interactivo de tallas con cambio dinámico de estado (ej. cambio a talla *6M*).
    * Estado inactivo y estado deshabilitado (*disabled*) para tallas agotadas (*24M*), aplicando atenuación al 38% de opacidad según directrices de accesibilidad.
    * Apertura de la **Guía de tallas** mediante ventana modal superpuesta (*overlay*).
-4. **Carrito de compra (`04`):** Resumen de artículos seleccionados, desglose de importes y botón de tramitación.
-5. **Checkout y gestión de errores (`05` y `05b`):** 
+4. **Pasarela de Inicio de Sesión (`00 - InicioSesion`):**
+   * Actúa como control de paso (*gatekeeper*) entre la intención de compra en Detalle y la gestión del Carrito.
+   * Formulario de acceso directo con credenciales (`til_email`, `til_password`) y acceso federado con Google (`btn_google`).
+   * Casilla de verificación de aceptación obligatoria de términos y condiciones (`cb_terminos`) y recuperación de contraseña (`tv_olvido_password`).
+   * Tras la autenticación satisfactoria, se preserva el artículo seleccionado y se redirige automáticamente al Carrito de compra.
+5. **Carrito de compra (`04`):** Resumen de artículos seleccionados, desglose de importes y botón de tramitación.
+6. **Checkout y gestión de errores (`05` y `05b`):** 
    * Selección de métodos de pago (Tarjeta de crédito / Bizum).
    * Documentación del **estado de error (`05b`)**: tratamiento de denegación de pago con token semántico de error, borde de advertencia y mensaje de recuperación contextual.
-6. **Confirmación de pedido (`06`):** Notificación de compra satisfactoria con número de pedido y botón de retorno al inicio.
-7. **Perfil de usuario (`07`):** Gestión de cuenta, direcciones y pedidos.
+7. **Confirmación de pedido (`06`):** Notificación de compra satisfactoria con número de pedido y botón de retorno al inicio.
+8. **Perfil de usuario (`07`):** Gestión de cuenta, direcciones y pedidos.
 
 ---
 
@@ -251,6 +264,9 @@ La solución de diseño desarrollada para la aplicación de moda infantil respon
 
 * **Soporte Dark Theme y accesibilidad:**  
   La adaptación a modo oscuro no invierte colores arbitrariamente; redistribuye la luminancia para mantener el cumplimiento de contraste según los criterios de éxito WCAG 2.1 (nivel AA), reduciendo la fatiga visual en entornos de baja iluminación.
+
+* **Estrategia de registro diferido:**  
+  La inclusión de la pantalla `00 - InicioSesion` como pasarela entre la vista de Detalle y el Carrito elimina la fricción de entrada al abrir la aplicación. Los usuarios pueden explorar libremente el catálogo y visualizar fichas de producto sin barreras previas. La autenticación solo se solicita cuando existe una intención firme de conversión (añadir al carrito o iniciar compra), reduciendo el abandono inicial y manteniendo el contexto de compra intacto tras iniciar sesión.
 
 ---
 
